@@ -1,14 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using WebApiAjax.Models;
 
 namespace WebApiAjax.Controllers
 {
-    public class MathController : Controller
+    public class MathController : ApiController
     {
-        // GET
-        public ActionResult Index()
-        {
-            return
-            View();
+        // GET api/math/calculate
+        [HttpGet]
+        public CalcResult Calculate(int x, int y) {
+            return new CalcResult() { Sum = x+y, Difference = x-y, Product = x*y, Quotient = x/y };
         }
     }
 }
